@@ -1,9 +1,9 @@
-import { trips } from '../data/hiking';
+import { trips } from '../data/adventures';
 
-export default function Hiking() {
+export default function Adventures() {
   return (
     <div>
-      <h1 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '2rem' }}>Hiking</h1>
+      <h1 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '2rem' }}>Adventures</h1>
       {trips.map((t, i) => (
         <div key={i} style={{ marginBottom: '3rem' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>

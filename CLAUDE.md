@@ -1,6 +1,6 @@
 # Personal Website
 
-Vite + React site hosted on GitHub Pages. Four pages: Home, Resume, Projects, Hiking.
+Vite + React site hosted on GitHub Pages. Four pages: Home, Resume, Projects, Adventures.
 
 ## How to run
 - Dev: `npm run dev`
@@ -13,14 +13,14 @@ Vite + React site hosted on GitHub Pages. Four pages: Home, Resume, Projects, Hi
 |---|---|
 | Resume (experience, education, skills) | `src/data/resume.js` |
 | Projects (title, description, video, link) | `src/data/projects.js` |
-| Hiking trips (name, date, description, photos) | `src/data/hiking.js` |
+| Adventures/trips (name, date, description, photos) | `src/data/adventures.js` |
 | Your name / tagline | `src/pages/Home.jsx` |
 | Colors, font, max-width | CSS variables in `src/index.css` |
 | Nav links | `src/components/Nav.jsx` |
 
 ## Asset locations
 - Project videos: `public/assets/videos/<file>.mp4` → reference as `/assets/videos/<file>.mp4`
-- Hiking photos: `public/assets/hiking/<file>.jpg` → reference by filename only in `hiking.js`
+- Adventure photos: `public/assets/hiking/<file>.jpg` → reference by filename only in `adventures.js`
 
 ## Data schemas
 
@@ -31,7 +31,7 @@ Vite + React site hosted on GitHub Pages. Four pages: Home, Resume, Projects, Hi
 // videoSrc: YouTube embed URL (https://...) or local path (/assets/videos/file.mp4)
 ```
 
-**hiking.js** — each entry:
+**adventures.js** — each entry:
 ```js
 { name, date, description, photos }
 // photos: string[] of filenames in public/assets/hiking/
@@ -43,7 +43,11 @@ Vite + React site hosted on GitHub Pages. Four pages: Home, Resume, Projects, Hi
 ```
 
 ## Routing
-Uses `HashRouter` (required for GitHub Pages). Routes: `/` `/resume` `/projects` `/hiking`.
+Uses `HashRouter` (required for GitHub Pages). Routes: `/` `/resume` `/projects` `/adventures`.
+
+> **Note:** The Adventures page component is `src/pages/Adventures.jsx` and its data file is
+> `src/data/adventures.js`. The photo assets folder is still named `public/assets/hiking/` —
+> do NOT rename it, just keep pointing there.
 
 ## Deployment
 `vite.config.js` `base` and `package.json` `homepage` must both match the GitHub repo name.
