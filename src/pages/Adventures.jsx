@@ -4,7 +4,7 @@ export default function Adventures() {
   return (
     <div>
       <h1 style={{ fontSize: '1.75rem', fontWeight: 600, marginBottom: '2rem' }}>Adventures</h1>
-      {trips.map((t, i) => (
+      {[...trips].sort((a, b) => new Date(b.date) - new Date(a.date)).map((t, i) => (
         <div key={i} style={{ marginBottom: '3rem' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem' }}>
             <h2 style={{ fontSize: '1.2rem', fontWeight: 600 }}>{t.name}</h2>
@@ -23,7 +23,7 @@ export default function Adventures() {
               {t.photos.map((photo, j) => (
                 <img
                   key={j}
-                  src={`/assets/hiking/${photo}`}
+                  src={`${import.meta.env.BASE_URL}assets/hiking/${photo}`}
                   alt={`${t.name} ${j + 1}`}
                   style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: '4px' }}
                 />
