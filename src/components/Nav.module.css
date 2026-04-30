@@ -1,22 +1,102 @@
+/* ─── Base ───────────────────────────────────────────────────────────── */
+
 .nav {
+  position: fixed;
+  z-index: 100;
   display: flex;
-  gap: 2rem;
-  padding: 1.25rem 2rem;
-  border-bottom: 1px solid #e5e5e5;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav a {
+
+/* ─── Horizontal layout (bottom edge — home page only) ───────────────── */
+
+.horizontal {
+  left: 0;
+  right: 0;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem 2rem;
+}
+
+.bottom {
+  bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+/* ─── Vertical layout (left edge — all other pages) ──────────────────── */
+
+.vertical {
+  top: 0;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  width: 56px;
+  overflow: hidden;
+  /* Width animates on hover; transform animates on page transition */
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.3s ease;
+}
+
+.vertical:hover {
+  width: 160px;
+}
+
+.left {
+  left: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+
+/* ─── Links ──────────────────────────────────────────────────────────── */
+
+.link {
+  display: flex;
+  align-items: center;
   color: var(--text);
   font-weight: 500;
   font-size: 0.95rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.nav a:hover {
+.vertical .link {
+  padding: 0.85rem 1rem;
+  width: 100%;
+}
+
+.link:hover {
   font-weight: 700;
 }
 
-.nav a.active {
+.active {
   color: var(--accent);
   font-weight: 700;
+}
+
+
+/* ─── Label text ─────────────────────────────────────────────────────── */
+
+/* In horizontal mode, both spans sit side-by-side and form the full label. */
+.firstLetter,
+.restOfLabel {
+  /* no special treatment in horizontal mode */
+}
+
+/* In vertical mode, only the first letter is visible by default.
+   The rest of the label slides in when the nav is hovered. */
+.vertical .restOfLabel {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.3s ease;
+}
+
+.vertical:hover .restOfLabel {
+  max-width: 120px;
 }
