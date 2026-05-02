@@ -1,0 +1,62 @@
+/* Tiles sit in the vertical center of the hero */
+.tilesContainer {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  perspective: 900px;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* Base tile — frosted glass card */
+.tile {
+  cursor: pointer;
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  padding: 2.25rem 4.5rem;
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: #222;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease, font-weight 0.1s;
+}
+
+/* ─── 3D positions along the concave arc ─────────────────────────────── */
+/* Outer tiles: rotated towards viewer + pushed forward (translateZ+)     */
+/* Middle tile: no rotation, slightly pushed back (translateZ-)           */
+
+.tileLeft {
+  transform: rotateY(45deg) translateZ(90px);
+}
+.tileLeft:hover {
+  transform: rotateY(45deg) translateZ(90px) scale(1.08);
+  font-weight: 700;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.tileMiddle {
+  transform: translateZ(-35px);
+}
+.tileMiddle:hover {
+  transform: translateZ(-35px) scale(1.08);
+  font-weight: 700;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.tileRight {
+  transform: rotateY(-35deg) translateZ(70px);
+}
+.tileRight:hover {
+  transform: rotateY(-35deg) translateZ(70px) scale(1.08);
+  font-weight: 700;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}

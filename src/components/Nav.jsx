@@ -62,6 +62,9 @@ export default function Nav() {
     navigate(toPath, { state: { fromEdge: currentEdge } });
   };
 
+  // Home page uses floating tiles for navigation — no nav bar needed
+  if (currentEdge === 'bottom') return null;
+
   // During the entrance animation, disable transitions so the nav snaps
   // to its starting position instantly before animating.
   const inlineStyle = entranceTransform
